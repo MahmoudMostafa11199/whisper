@@ -32,9 +32,7 @@ async function api(method, path, { body, auth = false } = {}) {
   });
 
   const text = await res.text();
-  console.log(text);
   const data = text ? JSON.parse(text) : null;
-  console.log(data);
 
   if (!res.ok) {
     const err = new Error((data && data.error) || `HTTP ${res.status}`);

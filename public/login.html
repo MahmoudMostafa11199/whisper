@@ -40,7 +40,7 @@
         </div>
       </div>
     </main>
-    <script src="./app.js"></script>
+    <script src="/app.js"></script>
     <script>
       document.getElementById('form').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -54,7 +54,6 @@
           setUser(user);
           location.href = '/inbox.html';
         } catch (err) {
-          console.error(err);
           document.getElementById('err').textContent = err.message;
         }
       });
