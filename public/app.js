@@ -31,9 +31,10 @@ async function api(method, path, { body, auth = false } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  const text = await res.text();
   const textJson = await res.json();
   console.log(textJson);
+
+  const text = await res.text();
   const data = text ? JSON.parse(text) : null;
   console.log(data);
 
