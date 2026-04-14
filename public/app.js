@@ -30,10 +30,13 @@ async function api(method, path, { body, auth = false } = {}) {
     headers,
     body: body ? JSON.stringify(body) : undefined,
   });
+
+  console.log(body);
   console.log(res);
+
   const text = await res.text();
-  console.log(JSON.parse(text));
   const data = text ? JSON.parse(text) : null;
+
   if (!res.ok) {
     const err = new Error((data && data.error) || `HTTP ${res.status}`);
     err.status = res.status;
