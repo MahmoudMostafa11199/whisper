@@ -1,10 +1,19 @@
 const TOKEN_KEY = 'whisper_token';
 const USER_KEY = 'whisper_user';
 
-function getToken() { return localStorage.getItem(TOKEN_KEY); }
-function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
-function getUser() { const s = localStorage.getItem(USER_KEY); return s ? JSON.parse(s) : null; }
-function setUser(u) { localStorage.setItem(USER_KEY, JSON.stringify(u)); }
+function getToken() {
+  return localStorage.getItem(TOKEN_KEY);
+}
+function setToken(t) {
+  localStorage.setItem(TOKEN_KEY, t);
+}
+function getUser() {
+  const s = localStorage.getItem(USER_KEY);
+  return s ? JSON.parse(s) : null;
+}
+function setUser(u) {
+  localStorage.setItem(USER_KEY, JSON.stringify(u));
+}
 function clearAuth() {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(USER_KEY);
@@ -22,6 +31,8 @@ async function api(method, path, { body, auth = false } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
   const text = await res.text();
+  console.log(text);
+  console.log(JSON.parse(text));
   const data = text ? JSON.parse(text) : null;
   if (!res.ok) {
     const err = new Error((data && data.error) || `HTTP ${res.status}`);
@@ -33,9 +44,17 @@ async function api(method, path, { body, auth = false } = {}) {
 }
 
 function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
-  }[c]));
+  return String(s).replace(
+    /[&<>"']/g,
+    (c) =>
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      })[c],
+  );
 }
 
 function renderNav() {
@@ -49,24 +68,35 @@ function renderNav() {
       </div>
       <div class="flex-none gap-2">
         <a href="/feed.html" class="btn btn-ghost btn-sm">Feed</a>
-        ${user ? `
+        ${
+          user
+            ? `
           <a href="/inbox.html" class="btn btn-ghost btn-sm">Inbox</a>
           <a href="/profile.html" class="btn btn-ghost btn-sm">Profile</a>
           <a href="/user.html?u=${user.username}" class="btn btn-ghost btn-sm">My page</a>
           <button id="logoutBtn" class="btn btn-sm btn-outline">Logout (@${user.username})</button>
-        ` : `
+        `
+            : `
           <a href="/login.html" class="btn btn-ghost btn-sm">Login</a>
           <a href="/signup.html" class="btn btn-primary btn-sm">Sign up</a>
-        `}
+        `
+        }
       </div>
     </div>
   `;
   const lb = document.getElementById('logoutBtn');
-  if (lb) lb.addEventListener('click', () => { clearAuth(); location.href = '/'; });
+  if (lb)
+    lb.addEventListener('click', () => {
+      clearAuth();
+      location.href = '/';
+    });
 }
 
 function requireAuth() {
-  if (!getToken()) { location.href = '/login.html'; return false; }
+  if (!getToken()) {
+    location.href = '/login.html';
+    return false;
+  }
   return true;
 }
 
