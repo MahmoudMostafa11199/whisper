@@ -9,5 +9,5 @@ export async function listGlobalFeed(req, res, next) {
   // Populate recipient with: username displayName avatarUrl tags.
   // Sort answeredAt desc. Pagination envelope { data, page, limit, total, totalPages }.
   // See: docs/API.md "GET /api/feed", tester/tests/global-feed.test.js
-  throw new Error('not implemented');
+  // throw new Error('not implemented');
 }

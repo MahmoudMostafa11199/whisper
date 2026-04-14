@@ -54,6 +54,7 @@
           setUser(user);
           location.href = '/inbox.html';
         } catch (err) {
+          console.error(err);
           document.getElementById('err').textContent = err.message;
         }
       });
