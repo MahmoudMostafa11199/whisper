@@ -32,7 +32,8 @@ async function api(method, path, { body, auth = false } = {}) {
   });
 
   const text = await res.text();
-  console.log(text);
+  const textJson = await res.json();
+  console.log(textJson);
   const data = text ? JSON.parse(text) : null;
   console.log(data);
 
