@@ -1,6 +1,5 @@
 const TOKEN_KEY = 'whisper_token';
 const USER_KEY = 'whisper_user';
-const API_URL = 'http://localhost:3000';
 
 function getToken() {
   return localStorage.getItem(TOKEN_KEY);
@@ -26,7 +25,7 @@ async function api(method, path, { body, auth = false } = {}) {
     const t = getToken();
     if (t) headers.Authorization = `Bearer ${t}`;
   }
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(path, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined,
