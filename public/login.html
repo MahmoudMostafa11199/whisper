@@ -19,11 +19,11 @@
           <button class="btn btn-primary w-full">Log in</button>
         </form>
         <div id="err" class="text-error text-sm min-h-[1.25rem]"></div>
-        <a href="./signup.html" class="link link-hover text-center">Need an account? Sign up</a>
+        <a href="/signup.html" class="link link-hover text-center">Need an account? Sign up</a>
       </div>
     </div>
   </main>
-  <script src="./app.js"></script>
+  <script src="/app.js"></script>
   <script>
     document.getElementById('form').addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -35,7 +35,7 @@
         setToken(res.token);
         const user = await api('GET', '/api/auth/me', { auth: true });
         setUser(user);
-        location.href = './inbox.html';
+        location.href = '/inbox.html';
       } catch (err) {
         document.getElementById('err').textContent = err.message;
       }

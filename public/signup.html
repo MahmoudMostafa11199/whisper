@@ -48,13 +48,13 @@
             <button class="btn btn-primary w-full">Sign up</button>
           </form>
           <div id="err" class="text-error text-sm min-h-[1.25rem]"></div>
-          <a href="./login.html" class="link link-hover text-center"
+          <a href="/login.html" class="link link-hover text-center"
             >Have an account? Log in</a
           >
         </div>
       </div>
     </main>
-    <script src="./app.js"></script>
+    <script src="/app.js"></script>
     <script>
       document.getElementById('form').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -70,7 +70,7 @@
           const res = await api('POST', '/api/auth/signup', { body });
           setToken(res.token);
           setUser(res.user);
-          location.href = './inbox.html';
+          location.href = '/inbox.html';
         } catch (err) {
           const details =
             err.data && err.data.details

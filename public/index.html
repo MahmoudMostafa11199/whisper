@@ -21,8 +21,8 @@
               Send anonymous questions. Answer honestly. Share your voice.
             </p>
             <div class="flex gap-2 justify-center">
-              <a href="./signup.html" class="btn btn-primary">Get started</a>
-              <a href="./feed.html" class="btn btn-outline">Browse feed</a>
+              <a href="/signup.html" class="btn btn-primary">Get started</a>
+              <a href="/feed.html" class="btn btn-outline">Browse feed</a>
             </div>
             <div class="divider">or visit a user</div>
             <div class="join w-full">
@@ -39,11 +39,11 @@
         </div>
       </div>
     </main>
-    <script src="./app.js"></script>
+    <script src="/app.js"></script>
     <script>
       function go() {
         const u = document.getElementById('findUser').value.trim();
-        if (u) location.href = `./user.html?u=${encodeURIComponent(u)}`;
+        if (u) location.href = `/user.html?u=${encodeURIComponent(u)}`;
       }
       document.getElementById('findBtn').addEventListener('click', go);
       document.getElementById('findUser').addEventListener('keydown', (e) => {

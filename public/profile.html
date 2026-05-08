@@ -39,7 +39,7 @@
       </div>
     </form>
   </main>
-  <script src="./app.js"></script>
+  <script src="/app.js"></script>
   <script>
     if (requireAuth()) {
       const f = document.getElementById('form');
@@ -55,7 +55,7 @@
           f.tags.value = (me.tags || []).join(', ');
           f.acceptingQuestions.checked = me.acceptingQuestions !== false;
         } catch (err) {
-          if (err.status === 401) { clearAuth(); location.href = './login.html'; }
+          if (err.status === 401) { clearAuth(); location.href = '/login.html'; }
           else document.getElementById('msg').innerHTML = `<span class="text-error">${escapeHtml(err.message)}</span>`;
         }
       })();

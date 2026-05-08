@@ -80,7 +80,7 @@ export async function listInbox(req, res, next) {
 
 async function getOwnedQuestion(id, userId) {
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    throw new HttpError(404, 'Question not found');
+    throw new HttpError(404, 'Id is not valid');
   }
 
   const question = await Question.findById(id);

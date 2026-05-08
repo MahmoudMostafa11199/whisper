@@ -7,6 +7,7 @@ export async function getPublicProfile(req, res, next) {
   const user = await User.findOne({ username }).select(
     'username displayName bio avatarUrl acceptingQuestions tags',
   );
+
   if (!user) {
     throw new HttpError(404, 'User not found');
   }
@@ -16,7 +17,9 @@ export async function getPublicProfile(req, res, next) {
 
 export async function updateMe(req, res, next) {
   const { displayName, bio, avatarUrl, acceptingQuestions, tags } = req.body;
+
   const userId = req.user._id;
+
   req.body.username && delete req.body.username;
   req.body.email && delete req.body.email;
 

@@ -19,7 +19,7 @@
     </div>
     <div id="list" class="space-y-3"></div>
   </main>
-  <script src="./app.js"></script>
+  <script src="/app.js"></script>
   <script>
     if (requireAuth()) {
       let current = '';
@@ -60,7 +60,7 @@
           const res = await api('GET', `/api/questions/inbox${current ? `?status=${current}` : ''}`, { auth: true });
           render(res.data);
         } catch (err) {
-          if (err.status === 401) { clearAuth(); location.href = './login.html'; return; }
+          if (err.status === 401) { clearAuth(); location.href = '/login.html'; return; }
           toast(err.message, 'error');
         }
       }

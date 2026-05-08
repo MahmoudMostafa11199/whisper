@@ -15,7 +15,7 @@
     <h3 class="text-xl font-bold mt-6 mb-2">Public answers</h3>
     <div id="list" class="space-y-3"></div>
   </main>
-  <script src="./app.js"></script>
+  <script src="/app.js"></script>
   <script>
     const u = new URL(location.href).searchParams.get('u');
     if (!u) {
@@ -37,7 +37,7 @@
                 </div>
                 ${user.bio ? `<p class="mt-2">${escapeHtml(user.bio)}</p>` : ''}
                 <div class="flex flex-wrap gap-1 mt-2">
-                  ${(user.tags || []).map((t) => `<a href="./feed.html?tag=${encodeURIComponent(t)}" class="badge badge-outline">${escapeHtml(t)}</a>`).join('')}
+                  ${(user.tags || []).map((t) => `<a href="/feed.html?tag=${encodeURIComponent(t)}" class="badge badge-outline">${escapeHtml(t)}</a>`).join('')}
                 </div>
                 ${user.acceptingQuestions === false ? '<div class="badge badge-warning mt-2">Not accepting questions</div>' : ''}
               </div>

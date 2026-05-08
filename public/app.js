@@ -62,21 +62,21 @@ function renderNav() {
   el.innerHTML = `
     <div class="navbar bg-base-100 shadow">
       <div class="flex-1">
-        <a href="./" class="btn btn-ghost text-xl">🤫 Whisper</a>
+        <a href="/" class="btn btn-ghost text-xl">🤫 Whisper</a>
       </div>
       <div class="flex-none gap-2">
-        <a href="./feed.html" class="btn btn-ghost btn-sm">Feed</a>
+        <a href="/feed.html" class="btn btn-ghost btn-sm">Feed</a>
         ${
           user
             ? `
-          <a href="./inbox.html" class="btn btn-ghost btn-sm">Inbox</a>
-          <a href="./profile.html" class="btn btn-ghost btn-sm">Profile</a>
-          <a href="./user.html?u=${user.username}" class="btn btn-ghost btn-sm">My page</a>
+          <a href="/inbox.html" class="btn btn-ghost btn-sm">Inbox</a>
+          <a href="/profile.html" class="btn btn-ghost btn-sm">Profile</a>
+          <a href="/user.html?u=${user.username}" class="btn btn-ghost btn-sm">My page</a>
           <button id="logoutBtn" class="btn btn-sm btn-outline">Logout (@${user.username})</button>
         `
             : `
-          <a href="./login.html" class="btn btn-ghost btn-sm">Login</a>
-          <a href="./signup.html" class="btn btn-primary btn-sm">Sign up</a>
+          <a href="/login.html" class="btn btn-ghost btn-sm">Login</a>
+          <a href="/signup.html" class="btn btn-primary btn-sm">Sign up</a>
         `
         }
       </div>
@@ -86,13 +86,13 @@ function renderNav() {
   if (lb)
     lb.addEventListener('click', () => {
       clearAuth();
-      location.href = './';
+      location.href = '/';
     });
 }
 
 function requireAuth() {
   if (!getToken()) {
-    location.href = './login.html';
+    location.href = '/login.html';
     return false;
   }
   return true;
